@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState, useEffect } from "react";
+import NavbarDesktop from "./components/NavbarDesktop";
+import NavbarMobile from "./components/NavbarMobile";
+import HeroMobile from "./components/HeroMobile";
+import HeroDesktop from "./components/HeroDesktop";
 
 function App() {
+  const [screenSize, setScreenSize] = useState(undefined);
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [screenSize, setScreenSize]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {screenSize >= 770 ? (
+        <>
+          <NavbarDesktop />
+          <HeroDesktop />
+        </>
+      ) : (
+        <>
+          <NavbarMobile />
+          <HeroMobile />
+        </>
+      )}
     </div>
   );
 }
