@@ -1,5 +1,111 @@
+.navbar {
+  border-bottom: 2px solid var(--LightGrayishBlue);
+  margin: 15px 50px 50px;
+  padding-bottom: 15px;
+}
+
 .nav-link {
-  padding: 20px;
-  color: var(--DarkGrayishBlue);
+  color: var(--GrayishBlue);
   transition: ease-in-out 0.2s;
+  cursor: pointer;
+  margin: 20px;
+  padding-bottom: 30px;
+}
+
+.nav-link:first-child {
+  margin-left: 25px;
+}
+
+.nav-link:hover {
+  color: var(--Black);
+  border-bottom: 3px solid var(--Orange);
+}
+
+.nav-list ul {
+  display: flex;
+}
+
+.avatar {
+  padding: 10px;
+  margin: 0 20px;
+}
+
+.cart {
+  transition: ease-in-out 0.2s;
+  padding: 10px;
+}
+
+.cart:hover {
+  color: var(--Black);
+}
+
+.menu {
+  padding: 18px;
+  margin-top: 3px;
+}
+
+.sidebar {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+}
+
+.sidebar-nav {
+  position: absolute;
+  background-color: white;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100vh;
+}
+
+.hide {
+  display: none;
+}
+
+.thumbs {
+  width: 60px;
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.show {
+  width: 60%;
+  border-radius: 15px;
+}
+
+.images {
+  width: 50%;
+  text-align: center;
+}
+
+.data {
+  width: 50%;
+  text-align: left;
+}
+
+.action {
+  display: flex;
+}
+
+.addbuttons {
+  border: none;
+  padding: 20px;
+  background-color: var(--LightGrayishBlue);
+}
+
+.count {
+  background-color: var(--LightGrayishBlue);
+  text-align: center;
+  margin: auto 0;
+  padding: 20px;
+}
+
+.addcart {
+  border: none;
+  background-color: var(--Orange);
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 700;
 }

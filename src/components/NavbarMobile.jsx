@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Menu from "../images/icon-menu.svg";
-import Logo from "../images/logo.svg";
-import Cart from "../images/icon-cart.svg";
-import Avatar from "../images/image-avatar.png";
 import Sidebar from "./Sidebar";
+import AvatarImg from "./AvatarImg";
+import LogoImg from "./Logo";
+import CartIcon from "./CartIcon";
 
 const NavbarMobile = () => {
   const [open, setOpen] = useState(false);
@@ -14,17 +14,17 @@ const NavbarMobile = () => {
 
   return (
     <>
-      <nav>
+      <nav style={{ margin: "0px", padding: "0px", display: "flex" }}>
         <button
           style={{ border: "none", background: "transparent" }}
           onClick={handleOpen}
+          className="menu"
         >
           <img alt="menu" src={Menu} />
         </button>
-
-        <img alt="logo" src={Logo} />
-        <img alt="cart" src={Cart} />
-        <img alt="avatar" src={Avatar} />
+        <LogoImg />
+        <CartIcon />
+        <AvatarImg />
       </nav>
       {open ? <Sidebar setOpen={setOpen} open={open} /> : ""}
     </>

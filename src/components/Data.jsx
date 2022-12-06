@@ -1,16 +1,7 @@
-export const data =
-  ({
-    name: "Collections",
-  },
+export const products = [
   {
-    name: "Man",
+    id: 1,
+    price: 0,
+    discountPercentage: 0,
   },
-  {
-    name: "Women",
-  },
-  {
-    name: "About",
-  },
-  {
-    name: "Contact",
-  });
+];

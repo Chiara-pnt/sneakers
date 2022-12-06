@@ -1,5 +1,6 @@
 import React from "react";
 import Close from "../images/icon-close.svg";
+import ItemList from "./ItemList";
 
 const Sidebar = ({ open, setOpen }) => {
   const handleClose = () => {
@@ -7,21 +8,16 @@ const Sidebar = ({ open, setOpen }) => {
   };
 
   return (
-    <div className={open ? "show" : "hide"}>
-      <button
-        onClick={handleClose}
-        style={{ border: "none", background: "transparent" }}
-      >
-        <img alt="close" src={Close} />
-      </button>
-
-      <ul>
-        <li>Collection</li>
-        <li>Men</li>
-        <li>Women</li>
-        <li>About</li>
-        <li>Contacts</li>
-      </ul>
+    <div className="sidebar">
+      <div className="sidebar-nav">
+        <button
+          onClick={handleClose}
+          style={{ border: "none", background: "transparent" }}
+        >
+          <img alt="close" src={Close} />
+        </button>
+        <ItemList />
+      </div>
     </div>
   );
 };

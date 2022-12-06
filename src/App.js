@@ -4,33 +4,41 @@ import NavbarDesktop from "./components/NavbarDesktop";
 import NavbarMobile from "./components/NavbarMobile";
 import HeroMobile from "./components/HeroMobile";
 import HeroDesktop from "./components/HeroDesktop";
+import { ContextProvider } from "./components/ContextProvider";
 
 function App() {
-  const [screenSize, setScreenSize] = useState(undefined);
+  const [screenSizeSmall, setScreenSizeSmall] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setScreenSize(window.innerWidth);
+    const mql = window.matchMedia("(max-width: 600px)");
+    function screenTest(e) {
+      if (e.matches) {
+        /* the viewport is 600 pixels wide or less */
+        setScreenSizeSmall(true);
+      } else {
+        /* the viewport is more than 600 pixels wide */
+        setScreenSizeSmall(false);
+      }
+    }
 
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [screenSize, setScreenSize]);
+    mql.addEventListener("change", screenTest);
+  }, []);
 
   return (
     <div className="App">
-      {screenSize >= 770 ? (
-        <>
-          <NavbarDesktop />
-          <HeroDesktop />
-        </>
-      ) : (
-        <>
-          <NavbarMobile />
-          <HeroMobile />
-        </>
-      )}
+      <ContextProvider>
+        {screenSizeSmall ? (
+          <>
+            <NavbarMobile />
+            <HeroMobile />
+          </>
+        ) : (
+          <>
+            <NavbarDesktop />
+            <HeroDesktop />
+          </>
+        )}
+      </ContextProvider>
     </div>
   );
 }
