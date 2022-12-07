@@ -2,7 +2,7 @@ import React from "react";
 import Close from "../images/icon-close.svg";
 import ItemList from "./ItemList";
 
-const Sidebar = ({ open, setOpen }) => {
+const Sidebar = ({ setOpen }) => {
   const handleClose = () => {
     setOpen(false);
   };
@@ -12,7 +12,7 @@ const Sidebar = ({ open, setOpen }) => {
       <div className="sidebar-nav">
         <button
           onClick={handleClose}
-          style={{ border: "none", background: "transparent" }}
+          style={{ border: "none", background: "transparent", padding: "20px" }}
         >
           <img alt="close" src={Close} />
         </button>

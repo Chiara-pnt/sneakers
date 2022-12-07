@@ -9,7 +9,7 @@ const LogoImg = () => {
       src={Logo}
       alt="logo"
       height="20px"
-      style={{ padding: "18px 0", cursor: "pointer" }}
+      style={{ padding: "18px 0", cursor: "pointer", marginRight: "25px" }}
     />
   );
 };

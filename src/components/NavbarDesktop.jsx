@@ -6,13 +6,16 @@ import CartIcon from "./CartIcon";
 
 const NavbarDesktop = () => {
   return (
-    <nav style={{ display: "flex" }} className="navbar">
+    <nav className="navbar-desktop">
       <LogoImg />
       <div className="nav-list">
         <ItemList />
       </div>
-      <div>
-        <CartIcon />
+      <div className="icons">
+        <div>
+          <CartIcon />
+        </div>
+
         <AvatarImg />
       </div>
     </nav>
