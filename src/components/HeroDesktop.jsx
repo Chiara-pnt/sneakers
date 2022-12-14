@@ -12,7 +12,7 @@ const HeroDesktop = () => {
           <img src={selectedImg} alt="img" className="show" />
         </div>
 
-        <div className="thumbnails">
+        <div className="thumbnails" key="thumbs">
           {images.map((img, index) => (
             <img
               className="preview"
