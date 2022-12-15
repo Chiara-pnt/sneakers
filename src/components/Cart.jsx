@@ -1,9 +1,9 @@
-import { useStateContext } from "./ContextProvider";
 import Close from "../images/icon-close.svg";
 import CartContent from "./CartContent";
+import { useStateContext } from "./ContextProvider";
 
 const Cart = ({ setOpenCart }) => {
-  const { full } = useStateContext();
+  const { cart } = useStateContext();
 
   const handleCloseCart = () => {
     setOpenCart(false);
@@ -18,11 +18,7 @@ const Cart = ({ setOpenCart }) => {
         <img alt="x" src={Close} style={{ padding: "20px" }} />
       </button>
       <div className="cart-title">Cart</div>
-      {full ? (
-        <CartContent />
-      ) : (
-        <div className="cart-body">Your cart is empty</div>
-      )}
+      {cart === [] ? <div>Your cart is empty</div> : <CartContent />}
     </div>
   );
 };

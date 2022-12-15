@@ -3,66 +3,14 @@ import IconMinus from "../images/icon-minus.svg";
 import { useStateContext } from "./ContextProvider";
 
 const Info = () => {
-  const { products, dispatch, count, setCount, full } = useStateContext();
-
-  const items = products.map((element) => {
-    return (
-      <>
-        <h1 key="name" style={{ fontSize: "30px", marginBottom: "20px" }}>
-          {element.name}
-        </h1>
-        <p
-          key={element.id}
-          style={{ color: "var(--DarkGrayishBlue)", marginBottom: "20px" }}
-        >
-          {element.desctription}
-        </p>
-        <div key={element.count} style={{ display: "flex" }}>
-          <h2
-            key={element.finalPrice}
-            style={{ fontSize: "30px", marginBottom: "20px" }}
-          >
-            ${element.finalPrice}.00
-          </h2>
-          <span
-            key={element.discountPercentage}
-            style={{
-              color: "var(--Orange)",
-              background: "var(--PaleOrange)",
-              padding: "3px",
-              borderRadius: "5px",
-              margin: "5px 15px",
-              height: "20px",
-            }}
-          >
-            {element.discountPercentage}
-          </span>
-        </div>
-        <p
-          key={element.price}
-          style={{
-            color: "var(--GrayishBlue)",
-            textDecoration: "line-through",
-            marginBottom: "20px",
-          }}
-        >
-          ${element.price}.00
-        </p>
-      </>
-    );
-  });
+  const { dispatch, cart, count, setCount } = useStateContext();
 
   const countPlus = () => {
-    if (full) {
-      return;
-    }
     setCount((prev) => prev + 1);
   };
 
   const countMinus = () => {
-    if (count === 0) {
-      return;
-    } else if (full) {
+    if (count === 1) {
       return;
     }
     setCount((prev) => prev - 1);
@@ -70,6 +18,38 @@ const Info = () => {
 
   return (
     <div className="data">
+      <h1 key="name" style={{ fontSize: "30px", marginBottom: "20px" }}>
+        Fall Limited Edition Sneakers
+      </h1>
+      <p style={{ color: "var(--DarkGrayishBlue)", marginBottom: "20px" }}>
+        These low-profile sneakers are your perfect casual wear companion.
+        Featuring a durable rubber outer sole, they'll withstand everything the
+        weather can offer
+      </p>
+      <div style={{ display: "flex" }}>
+        <h2 style={{ fontSize: "30px", marginBottom: "20px" }}>$150.00</h2>
+        <span
+          style={{
+            color: "var(--Orange)",
+            background: "var(--PaleOrange)",
+            padding: "3px",
+            borderRadius: "5px",
+            margin: "5px 15px",
+            height: "20px",
+          }}
+        >
+          50%
+        </span>
+      </div>
+      <p
+        style={{
+          color: "var(--GrayishBlue)",
+          textDecoration: "line-through",
+          marginBottom: "20px",
+        }}
+      >
+        $250.00
+      </p>
       <h6
         style={{
           color: "var(--Orange)",
@@ -81,7 +61,6 @@ const Info = () => {
       >
         sneaker company
       </h6>
-      {items}
       <div className="action">
         <div className="counters">
           <button
@@ -103,7 +82,7 @@ const Info = () => {
 
         <button
           className="addcart"
-          onClick={() => dispatch({ type: "ADD_PRODUCT" })}
+          onClick={() => dispatch({ type: "ADD_PRODUCT", payload: cart })}
         >
           <svg width="22" height="20" xmlns="http://www.w3.org/2000/svg">
             <path

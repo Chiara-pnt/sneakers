@@ -1,50 +1,38 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { useReducer } from "react";
 
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-  const [count, setCount] = useState(0);
-  const [full, setFull] = useState(false);
+  const [count, setCount] = useState(1);
 
-  const products = [
-    {
-      id: count,
-      price: 250,
-      discountPercentage: "50%",
-      finalPrice: 150,
-      name: "Fall Limited Edition Sneakers",
-      desctription:
-        "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they'll withstand everything the weather can offer",
-      count,
-    },
-  ];
+  const products = () => {
+    return [
+      {
+        id: 1,
+        finalPrice: 125,
+        name: "Fall Limited Edition Sneakers",
+        quantity: count,
+      },
+    ];
+  };
 
-  const cartReducer = (add, action) => {
+  const cartReducer = (cart, action) => {
     switch (action.type) {
       case "ADD_PRODUCT":
-        if (full) {
-          alert("You already added the product in your cart");
-        }
-        return setFull(true);
+        return products(action.payload);
       case "REMOVE_ALL_PRODUCT":
-        return setFull(false);
+        return [];
       default:
-        return add;
+        return cart;
     }
   };
 
-  const [add, dispatch] = useReducer(cartReducer, {
-    id: 1 + count,
-    name: "Autumn Limited Edition...",
-    count,
-    price: 125,
-    total: count * 125,
-  });
+  const [cart, dispatch] = useReducer(cartReducer, []);
 
   return (
     <StateContext.Provider
-      value={{ products, full, count, setCount, dispatch, add }}
+      value={{ products, dispatch, cart, count, setCount }}
     >
       {children}
     </StateContext.Provider>

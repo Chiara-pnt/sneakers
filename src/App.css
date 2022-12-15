@@ -164,6 +164,7 @@
   border-radius: 15px;
   background: white;
   box-shadow: 10px 10px 15px #aaaaaa;
+  width: 365px;
 }
 
 .cart-title {
@@ -177,6 +178,8 @@
 
 .cart-body {
   text-align: center;
+  z-index: 1;
+  position: relative;
 }
 
 .container {
@@ -226,4 +229,8 @@ svg:hover {
   position: absolute;
   margin-top: 270px;
   text-align: center;
+}
+
+.cart-content {
+  padding: 20px;
 }
